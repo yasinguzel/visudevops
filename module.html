@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Load Balancer</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+    <div class="row z-depth-2">
+        <!--Header-->
+        <div class="navbar-fixed z-depth-3">
+            <nav>
+                <div class="nav-wrapper" id="header">
+                    <div class="container">
+                        <a href="" class="brand-logo">Logo</a>
+                        <ul class="right">
+                            <li><a href="">Subject Title</a></li>
+                            <li><a href="">Subject Title</a></li>
+                            <li><a href="">Subject Title</a></li>
+                            <li><a href=""><i class="material-icons">search</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!--Load Balancer Visualing-->
+    <svg>
+    </svg>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!--Footer-->
+    <footer class="page-footer" id="header">
+        <div class="container">
+            <div class="row">
+                <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quibusdam, numquam ipsa cupiditate commodi, est culpa laudantium earum repudiandae quod tempore optio, accusantium quis aliquid hic rem eum sapiente alias!</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">© 2014 Copyright</div>
+        </div>
+    </footer>
+    <script>
+        svg.selectAll("path")
+            .data(tree.links(nodes))
+          .enter().append("path")
+            .attr("d", d3.svg.diagonal());
+    </script>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+</body>
+
+</html>

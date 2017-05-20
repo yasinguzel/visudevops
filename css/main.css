@@ -1,16 +1,30 @@
-
-
-
 #header {
-    background: linear-gradient(to right, #4776E6, #8E54E9); /*Standard*/
+    background: linear-gradient(to right, #4776E6, #8E54E9);
+    /*Standard*/
 }
 
+#subheader {}
 
-
-#subheader {
-    
-}
-
-#subheader a{
+#subheader a {
     color: black;
+}
+
+.node {
+    cursor: pointer;
+}
+
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.node text {
+    font: 10px sans-serif;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
 }
