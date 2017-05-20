@@ -14,9 +14,10 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+
     <link rel="stylesheet" href="css/main.css">
 
+    <script src="http://tntvis.github.io/tnt.tree/build/tnt.tree.min.js"></script>
 </head>
 
 <body>
@@ -39,8 +40,26 @@
             </nav>
         </div>
     </div>
-    <!--Load Balancer Visualing-->
-    <svg></svg>
+
+    <!--Load Balancer Visualise-->
+
+
+    <svg class="Module"></svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!--Footer-->
     <footer class="page-footer" id="header">
         <div class="container">
@@ -52,45 +71,41 @@
             <div class="container">© 2014 Copyright</div>
         </div>
     </footer>
+
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script>
-        var chart = d3.select("body").append("svg")
-            .attr("width", 500)
-            .attr("height", 500)
-          .append("g")
-            .attr("transform", "translate(50, 50)");
+        var width = "1000",
+            height = "300";
 
-        var tree = d3.layout.tree()
-            .size([400, 400]);
-
-        d3.json("myknowledgedomain.json", function(data) {
-          var nodes = tree.nodes(data); // create data nodes suitable for tree structure
-          var links = tree.links(nodes); // create links to connect source(parent) and target(child) nodes
-
-          var nodes = chart.selectAll(".node")
-              .data(nodes).enter()
+        var canvas = d3.select("svg")
+            .attr("width", width)
+            .attr("height", height)
             .append("g")
-              .attr("class", "node")
-              .attr("transform", function(d){ return "translate(" + d.y + "," + d.x + ")"; }); // flip x and y of nodes
+            .attr("transform", "translate(50,50)");
 
-          nodes.append("circle")
-              .attr("r", 5)
-              .attr("fill", "steelblue");
-          nodes.append("text")
-              .text(function(d){ return d.name; });
+        var tree = d3.layout.tree().size([width, height]);
 
-          var diagonal = d3.svg.diagonal()
-              .projection(function(d){ return [d.y, d.x]; }); // flip x and y of links
+        d3.json("json/LoadBalancer.json", function(data) {
+            var nodes = tree.nodes(data);
+            var links = tree.links(nodes);
 
-          chart.selectAll(".link")
-              .data(links).enter()
-            .append("path")
-              .attr("class", "link")
-              .attr("fill", "none").attr("stroke", "#ADADAD")
-              .attr("d", diagonal);
+            var node = canvas.selectAll(".node")
+                .data(nodes)
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", function(d) {
+                    return "translate (" + d.x + "," + d.y + ")";
+                })
 
-        });
+            node.append("rect")
+                .attr("width", 50)
+                .attr("height", 50)
+                .attr("fill", "steelblue");
+
+        })
     </script>
+
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Compiled and minified JavaScript -->

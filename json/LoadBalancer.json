@@ -1,0 +1,11 @@
+{
+    "name": "İstek 1",
+    "children": [{
+        "name": "Load Balancer",
+        "children": [
+            { "name": "Server 1" },
+            { "name": "Server 2" },
+            { "name": "Server 3" }
+        ]
+    }]
+}

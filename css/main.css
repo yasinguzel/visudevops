@@ -3,8 +3,6 @@
     /*Standard*/
 }
 
-#subheader {}
-
 #subheader a {
     color: black;
 }
@@ -27,4 +25,16 @@
     fill: none;
     stroke: #ccc;
     stroke-width: 1.5px;
+}
+
+.Module {
+    width: 100%;
+    height: 100%;
+}
+
+#banner-animation {
+    width: 100%;
+    height: 200px;
+    border: none;
+    scrolling: none;
 }
