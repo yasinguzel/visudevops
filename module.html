@@ -40,26 +40,11 @@
             </nav>
         </div>
     </div>
-
+    <div class="row">
+        <button class="btn-floating btn-large waves-effect waves-light red" type="" onclick="addNewClient()"><i class="material-icons">add</i></button>
+    </div>
     <!--Load Balancer Visualise-->
-
-
     <svg class="Module"></svg>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!--Footer-->
     <footer class="page-footer" id="header">
         <div class="container">
@@ -74,8 +59,8 @@
 
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script>
-        var width = "1000",
-            height = "700";
+        var width = "500",
+            height = "900";
 
         var canvas = d3.select("svg")
             .attr("width", width)
@@ -84,6 +69,18 @@
             .attr("transform", "translate(50,50)");
 
         var tree = d3.layout.tree().size([width, height]);
+
+        function addNewClient() {
+
+            //data.children.push({})
+            d3.json("json/LoadBalancer.json", function(data) {
+                console.log(data.children[0].children);
+                data.children[0].children.push({
+                    "name": "Server 3"
+                });
+                console.log(data.children[0].children);
+            })
+        }
 
         d3.json("json/LoadBalancer.json", function(data) {
             var nodes = tree.nodes(data);
@@ -121,7 +118,6 @@
                 .attr("fill", "none")
                 .attr("stroke", "black")
                 .attr("d", diagonal);
-
         })
     </script>
 
