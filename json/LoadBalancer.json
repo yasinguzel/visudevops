@@ -5,6 +5,12 @@
         "children": [
             { "name": "Server 1" },
             { "name": "Server 2" },
+            { "name": "Server 3" },
+            { "name": "Server 3" },
+            { "name": "Server 3" },
+            { "name": "Server 3" },
+            { "name": "Server 3" },
+            { "name": "Server 3" },
             { "name": "Server 3" }
         ]
     }]
