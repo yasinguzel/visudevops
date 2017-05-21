@@ -41,9 +41,17 @@
     height: 200px;
     border: none;
 }
-
-.dot{
+@keyframes dash{
+    from{
+        stroke-dashoffset: 1000;
+    }
+    to{
+        stroke-dashoffset:10;
+    }
+}
+.ok{
     stroke-dasharray: 5;
     animation: dash 20s linear infinite;
-    to{stroke-dashoffset:1000;}
 }
+.error{}
+.noCase{}

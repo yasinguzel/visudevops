@@ -103,6 +103,7 @@ function refresh() {
 draw();
 
 function clientCount() {
+    var serverPower = [];
     var clientCounter = document.getElementById("clientCount").value;
     document.getElementsByTagName("text")[0].innerHTML = clientCounter;
     var serverPower = document.getElementById("serverPower").value;
@@ -110,8 +111,25 @@ function clientCount() {
         return parseInt(item, 10);
     });
 
-
-    if (serverPower.length > serverCounter) {
-        Materialize.toast('Sunucu gücü sayısı ekledğiniz sunucu sayısını aşıyor!', 4000);
+    if (serverPower.length != serverCounter + 1) {
+        Materialize.toast('Sunucu gücü sayısı ekledğiniz sunucu sayısı ile eşleşmiyor!', 4000);
+    }
+    else{
+        var paths = d3.selectAll("path");
+        for (var i = 0; i < serverPower.length; i++) {
+            if (serverPower[i] < clientCounter) {
+                console.log("Güç yetiyor abi");
+                clientCounter -= serverPower[i];
+                document.getElementsByTagName("path")[i+1].classList.add('ok');
+            }
+            else if (serverPower[i] == clientCounter){
+                console.log("Gücü tam yetirdik.");
+                clientCounter -= serverPower[i];
+                document.getElementsByTagName("path")[i+1].classList.add('ok');
+            }
+            else{
+                console.log("Gücü yetmiyor...");
+            }
+        }
     }
 }
