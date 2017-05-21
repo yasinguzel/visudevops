@@ -11,10 +11,14 @@
     cursor: pointer;
 }
 
-.node circle {
-    fill: #fff;
-    stroke: steelblue;
-    stroke-width: 1.5px;
+.node rect {
+    fill: #2196F3;
+    width: 50px;
+    height: 100px;
+}
+
+.node rect:hover {
+    fill: #e74c3c;
 }
 
 .node text {
@@ -29,11 +33,17 @@
 
 .Module {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 #banner-animation {
     width: 100%;
     height: 200px;
     border: none;
+}
+
+.dot{
+    stroke-dasharray: 5;
+    animation: dash 20s linear infinite;
+    to{stroke-dashoffset:1000;}
 }
