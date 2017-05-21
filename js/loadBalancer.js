@@ -57,9 +57,6 @@ function draw() {
     var i = 0;
     node.append("text")
         .attr("id","x")
-        .append("tspan")
-        .attr("x","31")
-        .attr("y","85")
         .text(function(d) {
             return d.name;
         }
@@ -106,6 +103,7 @@ function refresh() {
 draw();
 
 function clientCount() {
+    deleteLi();
     var serverPower = [];
     var clientCounter = document.getElementById("clientCount").value;
     document.getElementsByTagName("text")[0].innerHTML = clientCounter;
@@ -122,20 +120,24 @@ function clientCount() {
         for (var i = 0; i < serverPower.length; i++) {
             if (serverPower[i] > clientCounter) {
                 clientCounter -= serverPower[i];
-                document.getElementsByTagName("path")[i+1].classList.remove('error');
-                document.getElementsByTagName("path")[i+1].classList.add('ok');
-                document.getElementsByTagName("rect")[i+2].id = 'lbOk';
+                //document.getElementsByTagName("path")[i+1].classList.remove('error');
+                document.getElementsByTagName("path")[i+1].classList.add('pass');
+                document.getElementsByTagName("rect")[i+2].id = 'lbPass';
+                addProcess(i+1+". sunucu "+serverPower[i]+" isteği karşıladı");
             }
             else if (serverPower[i] == clientCounter){
                 clientCounter -= serverPower[i];
-                document.getElementsByTagName("path")[i+1].classList.remove('error');
-                document.getElementsByTagName("path")[i+1].classList.add('ok');
-                document.getElementsByTagName("rect")[i+2].id = 'lbOk';
+                //document.getElementsByTagName("path")[i+1].classList.remove('error');
+                document.getElementsByTagName("path")[i+1].classList.add('pass');
+                document.getElementsByTagName("rect")[i+2].id = 'lbPass';
+                addProcess(i+1+". sunucu "+serverPower[i]+" isteği karşıladı");
             }
             else{
-                document.getElementsByTagName("path")[i+1].classList.remove('ok');
-                document.getElementsByTagName("path")[i+1].classList.add('error');
-                document.getElementsByTagName("rect")[i+2].id = 'lbError';
+                clientCounter -= serverPower[i];
+                //document.getElementsByTagName("path")[i+1].classList.remove('ok');
+                document.getElementsByTagName("path")[i+1].classList.add('pass');
+                document.getElementsByTagName("rect")[i+2].id = 'lbPass';
+                addProcess(i+1+". sunucu "+serverPower[i]+" isteği karşıladı");
             }
         }
 
@@ -145,6 +147,7 @@ function clientCount() {
             document.getElementsByTagName("path")[0].classList.add('ok');
             document.getElementsByTagName("rect")[0].id = 'lbOk';
             document.getElementsByTagName("rect")[1].id = 'lbOk';
+            addProcess("İsteklerin tümü karşılandı");
 
         }
         else if(clientCounter < 0){
@@ -153,14 +156,29 @@ function clientCount() {
             document.getElementsByTagName("path")[0].classList.add('ok');
             document.getElementsByTagName("rect")[0].id = 'lbOk';
             document.getElementsByTagName("rect")[1].id = 'lbOk';
+            addProcess("İsteklerin tümü karşılandı");
         }
         else{
             console.log("İstekler karşılanamadı");
             document.getElementsByTagName("path")[0].classList.remove('ok');
-            document.getElementsByTagName("path")[0].classList.add('eror');
+            document.getElementsByTagName("path")[0].classList.add('error');
             document.getElementsByTagName("rect")[0].id = 'lbError';
             document.getElementsByTagName("rect")[1].id = 'lbError';
-            
+            addProcess(clientCounter+" istek karşılanamadı");
+            addProcess("İsteklerin tümü karşılanamadı");            
         }
     }
+}
+
+
+function addProcess(process) {
+    var node = document.createElement("LI");
+    node.className += "collection-item";
+    var textnode = document.createTextNode(process);
+    node.appendChild(textnode);
+    document.getElementById("myList").appendChild(node);
+}
+
+function deleteLi(){
+    document.getElementById("myList").innerHTML = "";
 }

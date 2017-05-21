@@ -27,7 +27,7 @@
             <nav>
                 <div class="nav-wrapper" id="header">
                     <div class="container">
-                        <a href="index.html" class="brand-logo">Logo</a>
+                        <a href="index.html" class="brand-logo"><img src="img/logo.png" style="margin-top: 10px;"></a>
                         <ul class="right">
                             <li><a href="">Network</a></li>
                             <li><a href="">ITIT</a></li>
@@ -50,41 +50,53 @@
                     <ul class="tabs tabs-fixed-width tabs-transparent">
                         <li class="tab"><a href="#test4" class="active">Uygulama</a></li>
                         <li class="tab"><a href="#test6">Nedir?</a></li>
+                        <li class="tab"><a href="#test5">Bilgilendirme</a></li>
                     </ul>
                 </div>
                 <div class="card-content blue lighten-5">
                     <div id="test6">
-                        <p>Yük dengelemenin en genel kullanım alanı sunucu çiftliği olarak bilinen, birçok sunucu kullanarak bir tane internet servisi sağlamaktır. Bu internet servisi genellikle popüler web siteleri, yüksek bant genişliğine sahip dosya aktarım
-                            iletişim kuralı siteleri, NNTP sunucusu, DNS sunucusu, mali işlemler gibi çalışması kritik uygulamalardır. Yük dengeleyici genellikle bir yazılımdır. İstemcilerle iletişime geçer ve gelen isteği cevap vermesi için herhangi
-                            bir zamanlama algoritması kullanarak seçtiği arka uç sunucusuna iletir. Sanal ip adrese (VIPs) sahiptir. Bu yöntemde istemciler arka uç sunucularla direk iletişime geçmediği için ağ yapısı ve diğer portlar üzerinde koşan bağımsız
-                            servisler üzerine gelebilecek saldırılar engellenir. </p>
+                        <p>Yük dengelemenin en genel kullanım alanı sunucu çiftliği olarak bilinen, birçok sunucu kullanarak bir tane internet servisi sağlamaktır. Bu internet servisi genellikle popüler web siteleri, yüksek bant genişliğine sahip dosya aktarım iletişim kuralı siteleri, NNTP sunucusu, DNS sunucusu, mali işlemler gibi çalışması kritik uygulamalardır. Yük dengeleyici genellikle bir yazılımdır. İstemcilerle iletişime geçer ve gelen isteği cevap vermesi için herhangi bir zamanlama algoritması kullanarak seçtiği arka uç sunucusuna iletir. Sanal ip adrese (VIPs) sahiptir. Bu yöntemde istemciler arka uç sunucularla direk iletişime geçmediği için ağ yapısı ve diğer portlar üzerinde koşan bağımsız servisler üzerine gelebilecek saldırılar engellenir. </p>
                     </div>
                     <div id="test4">
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
-                                     <div class="input-field col s6">
-                                      <i class="material-icons prefix">import_export</i>
-                                      <input id="clientCount" type="text" class="validate" required>
-                                      <label for="icon_prefix">İstek miktarı</label>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">import_export</i>
+                                        <input id="clientCount" type="text" class="validate" required>
+                                        <label for="icon_prefix">İstek miktarı</label>
                                     </div>
                                     <div class="input-field col s6">
-                                      <i class="material-icons prefix">view_carousel</i>
-                                      <input id="serverPower" type="tel" class="validate" required>
-                                      <label for="icon_telephone">Sunucu güçleri sırasıyla</label>
+                                        <i class="material-icons prefix">view_carousel</i>
+                                        <input id="serverPower" type="tel" class="validate" required>
+                                        <label for="icon_telephone">Sunucu güçleri sırasıyla</label>
                                     </div>
                                     <div class="input-field col s6">
-                                      <button class="btn waves-effect waves-light" type="submit" onclick="clientCount()">Gönder
+                                        <button class="btn waves-effect waves-light" type="submit" onclick="clientCount()">Gönder
                                         <i class="material-icons right">input</i>
                                       </button>
                                     </div>
-                                     <div class="input-field col s6">
-                                      <button class="btn waves-effect waves-light" type="submit" onclick="addNewClient()">Sunucu Ekle <span id="countServer">1</span>
+                                    <div class="input-field col s6">
+                                        <button class="btn waves-effect waves-light" type="submit" onclick="addNewClient()">Sunucu Ekle <span id="countServer">1</span>
                                       </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <ul class="collection" id="myList">
+                                            <li class="collection-item">İşlemler</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div id="test5">
+                        <ul class="collection">
+                          <li class="collection-item" style="color:#26a69a;">Başarılı veri akışı</li>
+                          <li class="collection-item" style="color:#ee6e73;">Başarısız veri akışı</li>
+                          <li class="collection-item" style="color:#f1c40f;">Load Balancer ile sunucu arasındaki başarılı veri akışı</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -97,15 +109,15 @@
         </div>
     </div>
 
-    <!--Footer-->
     <footer class="page-footer" id="header">
         <div class="container">
             <div class="row">
-                <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quibusdam, numquam ipsa cupiditate commodi, est culpa laudantium earum repudiandae quod tempore optio, accusantium quis aliquid hic rem eum sapiente alias!</p>
+                <p class="white-text">Bu proje KTÜ Of Teknoloji Fakültesi Yazılım Kulübündeki öğrenciler tarafından geliştirilmiştir.</p>
             </div>
         </div>
         <div class="footer-copyright">
-            <div class="container">© 2014 Copyright</div>
+            <div class="container">
+             © 2017 kodla.co | Hackathon
         </div>
     </footer>
 

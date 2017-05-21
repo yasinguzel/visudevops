@@ -18,7 +18,8 @@
 }
 
 .node text {
-    font: 10px sans-serif;
+    font: 25px sans-serif;
+    margin-left: 10px;
 }
 
 .link {
@@ -54,6 +55,11 @@
     animation: dash 20s linear infinite;
     stroke: #ee6e73;
 }
+.pass{
+    stroke-dasharray: 5;
+    animation: dash 20s linear infinite;
+    stroke: #f1c40f;
+}
 .noCase{}
 
 #lbOk{
@@ -62,4 +68,8 @@
 
 #lbError{
     fill: #ee6e73;
+}
+
+#lbPass{
+    fill: #f1c40f;
 }
