@@ -17,18 +17,13 @@
     height: 100px;
 }
 
-.node rect:hover {
-    fill: #e74c3c;
-}
-
 .node text {
     font: 10px sans-serif;
 }
 
 .link {
     fill: none;
-    stroke: #ccc;
-    stroke-width: 1.5px;
+    stroke-width: 5px;
 }
 
 .Module {
@@ -52,6 +47,19 @@
 .ok{
     stroke-dasharray: 5;
     animation: dash 20s linear infinite;
+    stroke: #26a69a;
 }
-.error{}
+.error{
+    stroke-dasharray: 5;
+    animation: dash 20s linear infinite;
+    stroke: #ee6e73;
+}
 .noCase{}
+
+#lbOk{
+    fill: #26a69a;
+}
+
+#lbError{
+    fill: #ee6e73;
+}

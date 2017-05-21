@@ -1,4 +1,4 @@
-var serverCounter = 0;
+var serverCounter = 1;
 var clientCounter = 0;
 
 var data = {
@@ -57,6 +57,9 @@ function draw() {
     var i = 0;
     node.append("text")
         .attr("id","x")
+        .append("tspan")
+        .attr("x","31")
+        .attr("y","85")
         .text(function(d) {
             return d.name;
         }
@@ -111,25 +114,53 @@ function clientCount() {
         return parseInt(item, 10);
     });
 
-    if (serverPower.length != serverCounter + 1) {
+    if (serverPower.length != serverCounter) {
         Materialize.toast('Sunucu gücü sayısı ekledğiniz sunucu sayısı ile eşleşmiyor!', 4000);
     }
     else{
         var paths = d3.selectAll("path");
         for (var i = 0; i < serverPower.length; i++) {
-            if (serverPower[i] < clientCounter) {
-                console.log("Güç yetiyor abi");
+            if (serverPower[i] > clientCounter) {
                 clientCounter -= serverPower[i];
+                document.getElementsByTagName("path")[i+1].classList.remove('error');
                 document.getElementsByTagName("path")[i+1].classList.add('ok');
+                document.getElementsByTagName("rect")[i+2].id = 'lbOk';
             }
             else if (serverPower[i] == clientCounter){
-                console.log("Gücü tam yetirdik.");
                 clientCounter -= serverPower[i];
+                document.getElementsByTagName("path")[i+1].classList.remove('error');
                 document.getElementsByTagName("path")[i+1].classList.add('ok');
+                document.getElementsByTagName("rect")[i+2].id = 'lbOk';
             }
             else{
-                console.log("Gücü yetmiyor...");
+                document.getElementsByTagName("path")[i+1].classList.remove('ok');
+                document.getElementsByTagName("path")[i+1].classList.add('error');
+                document.getElementsByTagName("rect")[i+2].id = 'lbError';
             }
+        }
+
+        if (clientCounter == 0) {
+            console.log("İstekleri karşıladık");
+            document.getElementsByTagName("path")[0].classList.remove('error');
+            document.getElementsByTagName("path")[0].classList.add('ok');
+            document.getElementsByTagName("rect")[0].id = 'lbOk';
+            document.getElementsByTagName("rect")[1].id = 'lbOk';
+
+        }
+        else if(clientCounter < 0){
+            console.log("İstekleri fazlasıyla karşıladık.");
+            document.getElementsByTagName("path")[0].classList.remove('error');
+            document.getElementsByTagName("path")[0].classList.add('ok');
+            document.getElementsByTagName("rect")[0].id = 'lbOk';
+            document.getElementsByTagName("rect")[1].id = 'lbOk';
+        }
+        else{
+            console.log("İstekler karşılanamadı");
+            document.getElementsByTagName("path")[0].classList.remove('ok');
+            document.getElementsByTagName("path")[0].classList.add('eror');
+            document.getElementsByTagName("rect")[0].id = 'lbError';
+            document.getElementsByTagName("rect")[1].id = 'lbError';
+            
         }
     }
 }
